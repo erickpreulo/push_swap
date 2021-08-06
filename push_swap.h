@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/04 12:27:49 by egomes            #+#    #+#             */
-/*   Updated: 2021/08/05 13:32:32 by egomes           ###   ########.fr       */
+/*   Updated: 2021/08/06 17:24:52 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define PUSH_SWAP_H
 
 #include <unistd.h>
+#include <stdlib.h>
 
 typedef struct	s_ps
 {
@@ -21,6 +22,8 @@ typedef struct	s_ps
 	int *a;
 	int *b;
 	char **av;
+	int i;
+	int j;
 }				t_ps;
 
 void    ft_putnbr(int nb);
@@ -28,5 +31,8 @@ void    ft_putchar(char c);
 int	ft_atoi(const char *str);
 int		ft_strlen(char *str);
 void	ft_putstr(char *str);
+void    swap_sa(t_ps *swap);
+void    swap_ra(t_ps *swap);
+void    swap_rra(t_ps *swap);
 
 #endif
