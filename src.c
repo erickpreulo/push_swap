@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/04 17:33:03 by egomes            #+#    #+#             */
-/*   Updated: 2021/08/04 18:45:30 by egomes           ###   ########.fr       */
+/*   Updated: 2021/08/06 21:54:23 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,9 @@ void    ft_putnbr(int nb)
 
 int	ft_atoi(const char *str)
 {
-	int	neg;
-	int	i;
-	int	num;
+	long int	neg;
+	long int	i;
+	long int	num;
 
 	i = 0;
 	neg = 1;

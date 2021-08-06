@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/04 12:27:49 by egomes            #+#    #+#             */
-/*   Updated: 2021/08/06 17:24:52 by egomes           ###   ########.fr       */
+/*   Updated: 2021/08/06 22:04:17 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,6 @@ void	ft_putstr(char *str);
 void    swap_sa(t_ps *swap);
 void    swap_ra(t_ps *swap);
 void    swap_rra(t_ps *swap);
+int		validation(t_ps *swap);
 
 #endif

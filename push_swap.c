@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/04 12:08:45 by egomes            #+#    #+#             */
-/*   Updated: 2021/08/06 17:59:31 by egomes           ###   ########.fr       */
+/*   Updated: 2021/08/06 22:06:37 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,11 @@
 
 void	push_swap(t_ps *swap)
 {
-	swap_sa(swap);
+	if (swap->ac > 2)
+		swap_sa(swap);
 }
 
-void	takearray(t_ps *swap)
+void	take_array(t_ps *swap)
 {
 	swap->j = 0;
 	swap->i = 1;
@@ -34,40 +35,20 @@ void	takearray(t_ps *swap)
 	}
 }
 
-void	printarray(t_ps *swap)
+void	print_array(t_ps *swap)
 {
 	swap->i = 0;
 	while (swap->i < (swap->ac -1))
 	{
 		ft_putnbr(swap->a[swap->i]);
-		ft_putchar('	');
+		ft_putchar(' ');
 		if (swap->b[swap->i] != 0) 
 			ft_putnbr(swap->b[swap->i]);
 		ft_putchar('\n');
 		swap->i++;
 	}
 	ft_putchar('a');
-	ft_putstr("	b");
-}
-
-int		duplicate(t_ps *swap)
-{
-	int i;
-	int j;
-
-	i = 0;
-	while (i < swap->ac - 1)
-	{
-		j = i + 1;
-		while (j < swap->ac - 1)
-		{
-			if (swap->a[i] == swap->a[j] || swap->a[i] == 0)
-				return (1);
-			j++;
-		}
-		i++;
-	}
-	return (0);
+	ft_putstr(" b");
 }
 
 int		main(int ac, char **av)
@@ -81,17 +62,17 @@ int		main(int ac, char **av)
 	swap.b = b;
 	swap.av = av;
 	if (ac < 2)
-		ft_putstr("ERROR");
+		ft_putstr("Error");
 	else
 	{
-		takearray(&swap);
-		if (duplicate(&swap))
+		take_array(&swap);
+		if (validation(&swap))
 		{
-			ft_putstr("ERROR\n");
+			ft_putstr("Error\n");
 			return (0);
 		}
 		push_swap(&swap);
-		printarray(&swap);
+		print_array(&swap);
 	}
 	ft_putchar('\n');
 	return (0);
