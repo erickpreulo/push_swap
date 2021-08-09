@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/06 22:02:39 by egomes            #+#    #+#             */
-/*   Updated: 2021/08/06 22:02:51 by egomes           ###   ########.fr       */
+/*   Updated: 2021/08/07 21:55:21 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int		duplicate(t_ps *swap)
 		j = i + 1;
 		while (j < swap->ac - 1)
 		{
-			if (swap->a[i] == swap->a[j] || swap->a[i] == 0)
+			if (swap->a[i] == swap->a[j])
 				return (1);
 			j++;
 		}

@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/04 12:27:49 by egomes            #+#    #+#             */
-/*   Updated: 2021/08/06 22:04:17 by egomes           ###   ########.fr       */
+/*   Updated: 2021/08/09 20:16:24 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,22 @@
 
 #include <unistd.h>
 #include <stdlib.h>
+#include <stdio.h>
 
 typedef struct	s_ps
 {
 	int ac;
 	int *a;
-	int *b;
+	int b[1000];
 	char **av;
 	int i;
 	int j;
+	int isb;
+	int bsize;
+	int size;
+	int save;
+	int countb;
+	int count;
 }				t_ps;
 
 void    ft_putnbr(int nb);
@@ -35,5 +42,11 @@ void    swap_sa(t_ps *swap);
 void    swap_ra(t_ps *swap);
 void    swap_rra(t_ps *swap);
 int		validation(t_ps *swap);
+void    swap_pb(t_ps *swap);
+int		ft_strlennbr(int *str);
+char	*ft_itoa(int n);
+int     *nbrcpya(t_ps *swap);
+void    swap_rb(t_ps *swap);
+int     *nbrcpyb(t_ps *swap);
 
 #endif
