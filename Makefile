@@ -6,11 +6,11 @@
 #    By: egomes <egomes@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/04 12:30:51 by egomes            #+#    #+#              #
-#    Updated: 2021/08/06 22:03:40 by egomes           ###   ########.fr        #
+#    Updated: 2021/08/10 14:01:12 by egomes           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRC = push_swap.c src.c swap.c validation.c
+SRC = push_swap.c src.c swap_a.c swap_b.c validation.c
 
 NAME = push_swap
 

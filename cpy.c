@@ -1,16 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   Push_swap.c                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/04 12:08:45 by egomes            #+#    #+#             */
-/*   Updated: 2021/08/10 22:27:37 by egomes           ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-#include "push_swap.h"
 
 void	print_array(t_ps *swap)
 {
@@ -20,7 +7,7 @@ void	print_array(t_ps *swap)
 	swap->i = 0;
 	swap->j = 0;
 	ft_putstr("stacks\n");
-	while ((swap->i <= (swap->ac - 2)) 
+	while ((swap->i <= (swap->ac - 2) && swap->j <= swap->bsize) 
 		|| ((swap->isb) && swap->j <= swap->bsize))
 	{
 		if (swap->bsize >= (swap->ac - 1) && i <= swap->bsize - (swap->ac - 1))
@@ -38,6 +25,8 @@ void	print_array(t_ps *swap)
 		{
 			if (swap->j <= swap->bsize)
 			{
+				if (swap->isa)
+					swap->bsize--;
 				ft_putnbr(swap->b[swap->j]);
 				swap->j++;
 			}
@@ -72,16 +61,11 @@ void	push_swap(t_ps *swap)
 	{
 		if (order_verify(swap))
 		{
-			print_array(swap);
 			swap_pb(swap);
 			swap_pb(swap);
-			swap_pb(swap);
-			swap_pa(swap);
 			swap_pa(swap);
 			swap_pa(swap);
 		}
-		else if (swap->find_v)
-			print_array(swap);
 	}
 }
 
@@ -141,7 +125,7 @@ int		main(int ac, char **av)
 	if (swap.find_v)
 		change_av(&swap);
 	if (ac < 2)
-		ft_putstr("Error\n");
+		ft_putstr("Error");
 	else
 	{
 		take_array(&swap);
@@ -150,8 +134,10 @@ int		main(int ac, char **av)
 			ft_putstr("Error\n");
 			return (0);
 		}
+		print_array(&swap);
 		push_swap(&swap);
 	}
 	print_commands(&swap);
+	ft_putchar('\n');
 	return (0);
 }
