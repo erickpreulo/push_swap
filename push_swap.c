@@ -112,6 +112,7 @@ void	init_struct(t_ps *swap)
 	swap->bsize = 0;
 	swap->find_v = 0;
 	swap->countcomm = 0;
+	swap->protection = 0;
 }
 
 void		find_v(char *str, t_ps *swap)

@@ -14,7 +14,6 @@
 
 void    magic_3(t_ps *swap)
 {
-    printf("OOO\n");
     if ((swap->a[0] > swap->a[1] && swap->a[0] < swap->a[2]) ||
         (swap->a[1] > swap->a[0] && swap->a[1] < swap->a[2]))
         swap_sa(swap);
@@ -25,7 +24,7 @@ void    magic_3(t_ps *swap)
 
 void    magic_4(t_ps *swap)
 {
-    if (swap->bsize == 0)
+    if (swap->countb == 0)
     {
         if (swap->a[0] < swap->a[1] && swap->a[0] < swap->a[2] && swap->a[0] < swap->a[3])
             swap_pb(swap);
@@ -51,9 +50,9 @@ void    magic_5_or_less(t_ps *swap)
 {
     if (swap->ac - 1 == 2)
         swap_sa(swap);
-    else if (swap->ac - 1 == 3)
+    else if (swap->ac - 1 == 3 && swap->countb == 0)
         magic_3(swap);
-    else if (swap->ac - 1 == 4)
+    else if (swap->ac - 1 == 4 || swap->ac - 1 + swap->countb == 4)
         magic_4(swap);
     /*else if (swap->ac - 1 == 5)
         magic_5(swap);*/
@@ -61,8 +60,14 @@ void    magic_5_or_less(t_ps *swap)
 
 void	magic_form(t_ps *swap)
 {
+    if (swap->protection > 20)
+    {
+        printf("mais de 20 tentativas");
+        exit(0);
+    }
 	if (order_verify(swap))
 	{
+        swap->protection++;
         if (swap->ac - 1 <= 5)
             magic_5_or_less(swap);
 		magic_form(swap);

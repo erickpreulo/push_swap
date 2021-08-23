@@ -40,6 +40,7 @@ typedef struct	s_ps
 	int ss;
 	int rr;
 	int rrr;
+	int protection;
 }				t_ps;
 
 void    ft_putnbr(int nb);
