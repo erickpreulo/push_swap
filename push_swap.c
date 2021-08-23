@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/04 12:08:45 by egomes            #+#    #+#             */
-/*   Updated: 2021/08/10 22:27:37 by egomes           ###   ########.fr       */
+/*   Updated: 2021/08/23 17:05:53 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	print_array(t_ps *swap)
 	{
 		if (swap->bsize >= (swap->ac - 1) && i <= swap->bsize - (swap->ac - 1))
 		{
-			ft_putchar(' ');
+			ft_putchar('	');
 			i++;
 		}
 		else
@@ -33,7 +33,7 @@ void	print_array(t_ps *swap)
 			ft_putnbr(swap->a[swap->i]);
 			swap->i++;
 		}
-		ft_putchar(' ');
+		ft_putchar('	');
 		if (swap->isb && swap->bsize >= (swap->ac - 1 - swap->i))
 		{
 			if (swap->j <= swap->bsize)
@@ -44,8 +44,11 @@ void	print_array(t_ps *swap)
 		}
 		ft_putchar('\n');
 	}
-	ft_putstr("_ _\n");
-	ft_putstr("a b\n");
+	swap->ss = 0;
+	swap->rr = 0;
+	swap->rrr = 0;
+	ft_putstr("_	_\n");
+	ft_putstr("a	b\n");
 }
 
 void	save_commands(t_ps *swap, char *str)
@@ -72,13 +75,12 @@ void	push_swap(t_ps *swap)
 	{
 		if (order_verify(swap))
 		{
-			print_array(swap);
-			swap_pb(swap);
-			swap_pb(swap);
-			swap_pb(swap);
-			swap_pa(swap);
-			swap_pa(swap);
-			swap_pa(swap);
+			if (swap->find_v)
+			{
+				save_commands(swap, "\n");
+				print_array(swap);
+			}
+			magic_form(swap);
 		}
 		else if (swap->find_v)
 			print_array(swap);
@@ -99,6 +101,9 @@ void	take_array(t_ps *swap)
 
 void	init_struct(t_ps *swap)
 {
+	swap->ss = 0;
+	swap->rr = 0;
+	swap->rrr = 0;
 	swap->isa = 0;
 	swap->isb = 0;
 	swap->changea = 0;
@@ -111,7 +116,7 @@ void	init_struct(t_ps *swap)
 
 void		find_v(char *str, t_ps *swap)
 {
-	if (str[0] == '-' && str[1] == 'v')
+	if (str[0] == '-' && str[1] == 'v' && str[2] == '\0')
 		swap->find_v = 1;
 }
 
@@ -135,6 +140,7 @@ int		main(int ac, char **av)
 
 	init_struct(&swap);
 	swap.ac = ac;
+	swap.cpyac = ac;
 	swap.a = a;
 	swap.av = av;
 	find_v(av[1], &swap);

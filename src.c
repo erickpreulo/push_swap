@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/04 17:33:03 by egomes            #+#    #+#             */
-/*   Updated: 2021/08/10 15:03:23 by egomes           ###   ########.fr       */
+/*   Updated: 2021/08/23 17:40:22 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,9 +98,25 @@ int		order_verify(t_ps *swap)
 	int i;
 
 	i = 0;
+	if (swap->countb > 0)
+		return (1);
 	while (i < swap->ac - 2)
 	{
-		if (swap->a[i] > swap->a[i + 1])
+		if ((swap->a[i] > swap->a[i + 1]))
+			return(1);
+		i++;
+	}
+	return (0);
+}
+
+int		order_verify_a(t_ps *swap)
+{
+	int i;
+
+	i = 0;
+	while (i < swap->ac - 2)
+	{
+		if ((swap->a[i] > swap->a[i + 1]))
 			return(1);
 		i++;
 	}

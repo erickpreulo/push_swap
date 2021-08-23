@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/10 14:00:18 by egomes            #+#    #+#             */
-/*   Updated: 2021/08/10 22:22:54 by egomes           ###   ########.fr       */
+/*   Updated: 2021/08/23 17:01:08 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,15 @@
 
 void    swap_sb(t_ps *swap)
 { 
-    if (swap->find_v)
-        ft_putstr("sb\n");
+    if (swap->find_v && !(swap->ss))
+        ft_putstr("\nsb\n");
     swap->i = swap->b[0];
     swap->b[0] = swap->b[1];
     swap->b[1] = swap->i;
-    if (swap->find_v)
+    if (swap->find_v && !(swap->ss))
         print_array(swap);
-    save_commands(swap, "sb\n");
+    if (!swap->ss)
+        save_commands(swap, "sb\n");
 }
 
 void    swap_rb(t_ps *swap)
@@ -30,8 +31,8 @@ void    swap_rb(t_ps *swap)
     int i;
     int *buf;
 
-    if (swap->find_v)
-        ft_putstr("rb\n");
+    if (swap->find_v && !(swap->rr))
+        ft_putstr("\nrb\n");
     buf = nbrcpyb(swap);
     ac = swap->countb - 1;
     swap->j = 0;
@@ -43,9 +44,10 @@ void    swap_rb(t_ps *swap)
         swap->j++;
     }
     swap->b[ac] = swap->i;
-    if (swap->find_v)
+    if (swap->find_v && !(swap->rr))
         print_array(swap);
-    save_commands(swap, "rb\n");
+    if (!swap->rr)
+        save_commands(swap, "rb\n");
     free(buf);
 }
 
@@ -71,8 +73,8 @@ void    swap_rrb(t_ps *swap)
     int i;
     int *buf;
 
-    if (swap->find_v)
-        ft_putstr("rrb\n");
+    if (swap->find_v && !(swap->rrr))
+        ft_putstr("\nrrb\n");
     buf = nbrcpyb(swap);
     ac = swap->bsize;
     swap->j = 1;
@@ -84,9 +86,10 @@ void    swap_rrb(t_ps *swap)
         swap->j++;
     }
     swap->b[0] = swap->i;
-    if (swap->find_v)
+    if (swap->find_v && !(swap->rrr))
         print_array(swap);
-    save_commands(swap, "rrb\n");
+    if (!swap->rrr)
+        save_commands(swap, "rrb\n");
     free(buf);
 }
 
@@ -126,7 +129,7 @@ void    less_a(t_ps *swap)
 void    swap_pb(t_ps *swap)
 {
     if (swap->find_v)
-        ft_putstr("pb\n");
+        ft_putstr("\npb\n");
     changeorder_b(swap);
     swap->isb = 1;
     swap->bsize = swap->countb;
@@ -140,7 +143,8 @@ void    swap_pb(t_ps *swap)
 void    swap_rrr(t_ps *swap)
 {
     if (swap->find_v)
-        ft_putstr("rrr\n");
+        ft_putstr("\nrrr\n");
+    swap->rrr = 1;
     swap_rra(swap);
     swap_rrb(swap);
     save_commands(swap, "rrr\n");
@@ -149,7 +153,8 @@ void    swap_rrr(t_ps *swap)
 void    swap_ss(t_ps *swap)
 {
     if (swap->find_v)
-        ft_putstr("ss\n");
+        ft_putstr("\nss\n");
+    swap->ss = 1;
     swap_sa(swap);
     swap_sb(swap);
     save_commands(swap, "ss\n");
@@ -158,7 +163,8 @@ void    swap_ss(t_ps *swap)
 void    swap_rr(t_ps *swap)
 {
     if (swap->find_v)
-        ft_putstr("rr\n");
+        ft_putstr("\nrr\n");
+    swap->rr = 1;
     swap_ra(swap);
     swap_rb(swap);
     save_commands(swap, "rr\n");

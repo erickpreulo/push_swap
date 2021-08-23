@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/06 15:26:01 by egomes            #+#    #+#             */
-/*   Updated: 2021/08/10 22:22:52 by egomes           ###   ########.fr       */
+/*   Updated: 2021/08/23 17:05:36 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,15 @@
 
 void    swap_sa(t_ps *swap)
 {
-    if (swap->find_v)
-        ft_putstr("sa\n");
+    if (swap->find_v && !(swap->ss))
+        ft_putstr("\nsa\n");
     swap->i = swap->a[0];
     swap->a[0] = swap->a[1];
     swap->a[1] = swap->i;
-    if (swap->find_v)
+    if (swap->find_v && !(swap->ss))
         print_array(swap);
-    save_commands(swap, "sa\n");
+    if (!swap->ss)
+        save_commands(swap, "sa\n");
 }
 
 void    swap_ra(t_ps *swap)
@@ -30,8 +31,8 @@ void    swap_ra(t_ps *swap)
     int i;
     int *buf;
 
-    if (swap->find_v)
-        ft_putstr("ra\n");
+    if (swap->find_v && !(swap->rr))
+        ft_putstr("\nra\n");
     buf = nbrcpya(swap);
     ac = swap->ac - 2;
     swap->j = 0;
@@ -44,9 +45,10 @@ void    swap_ra(t_ps *swap)
     }
     swap->a[ac] = swap->i;
     free(buf);
-    if (swap->find_v)
+    if (swap->find_v && !(swap->rr))
         print_array(swap);
-    save_commands(swap, "ra\n");
+    if (!swap->rr)
+        save_commands(swap, "ra\n");
 }
 
 int     *nbrcpya(t_ps *swap)
@@ -71,8 +73,8 @@ void    swap_rra(t_ps *swap)
     int i;
     int *buf;
 
-    if (swap->find_v)
-        ft_putstr("rra\n");
+    if (swap->find_v && !(swap->rrr))
+        ft_putstr("\nrra\n");
     buf = nbrcpya(swap);
     ac = swap->ac - 2;
     swap->j = 1;
@@ -84,22 +86,26 @@ void    swap_rra(t_ps *swap)
         swap->j++;
     }
     swap->a[0] = swap->i;
-    if (swap->find_v)
+    if (swap->find_v && !(swap->rrr))
         print_array(swap);
-    save_commands(swap, "rra\n");
+    if (!swap->rrr)
+        save_commands(swap, "rra\n");
     free(buf);
 }
 
 void    changeorder_a(t_ps *swap)
 {
     int *buf;
+    int i;
 
+    i = 0;
     buf = nbrcpya(swap);
     swap->i = 1;
-    while (swap->i <= swap->ac - 2)
+    while (swap->i <= swap->ac - 1)
     {
-        swap->a[swap->i] = buf[swap->i - 1];
+        swap->a[swap->i] = buf[i];
         swap->i++;
+        i++;
     }
     swap->a[0] = swap->b[0];
     swap->changea++;
@@ -122,10 +128,11 @@ void    less_b(t_ps *swap)
 void    swap_pa(t_ps *swap)
 {
     if (swap->find_v)
-        ft_putstr("pa\n");
+        ft_putstr("\npa\n");
     changeorder_a(swap);
     swap->isa = 1;
     less_b(swap);
+    swap->countb--;
     if (swap->find_v)
         print_array(swap);
     save_commands(swap, "pa\n");

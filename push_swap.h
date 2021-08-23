@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/04 12:27:49 by egomes            #+#    #+#             */
-/*   Updated: 2021/08/10 21:24:46 by egomes           ###   ########.fr       */
+/*   Updated: 2021/08/23 17:25:08 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,16 @@ typedef struct	s_ps
 	int bsize;
 	int size;
 	int save;
+	int cpyac;
 	int countb;
 	int changeb;
 	int changea;
 	int find_v;
 	char *commands[5000];
 	int	countcomm;
+	int ss;
+	int rr;
+	int rrr;
 }				t_ps;
 
 void    ft_putnbr(int nb);
@@ -60,8 +64,10 @@ char	*ft_itoa(int n);
 int     *nbrcpya(t_ps *swap);
 int     *nbrcpyb(t_ps *swap);
 int		order_verify(t_ps *swap);
+int		order_verify_a(t_ps *swap);
 void	print_array(t_ps *swap);
 void	save_commands(t_ps *swap, char *str);
 void    print(int *nbr);
+void	magic_form(t_ps *swap);
 
 #endif
