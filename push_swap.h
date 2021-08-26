@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/04 12:27:49 by egomes            #+#    #+#             */
-/*   Updated: 2021/08/23 17:25:08 by egomes           ###   ########.fr       */
+/*   Updated: 2021/08/26 00:46:08 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,11 @@ typedef struct	s_ps
 	int rr;
 	int rrr;
 	int protection;
+	int	stack;
+	int median;
+	int saveup;
+	int savedown;
+	int inversea;
 }				t_ps;
 
 void    ft_putnbr(int nb);
@@ -66,9 +71,12 @@ int     *nbrcpya(t_ps *swap);
 int     *nbrcpyb(t_ps *swap);
 int		order_verify(t_ps *swap);
 int		order_verify_a(t_ps *swap);
+int		order_verify_b(t_ps *swap);
 void	print_array(t_ps *swap);
 void	save_commands(t_ps *swap, char *str);
 void    print(int *nbr);
 void	magic_form(t_ps *swap);
+void    magic_5_or_less(t_ps *swap);
+int    find_median(t_ps *swap);
 
 #endif

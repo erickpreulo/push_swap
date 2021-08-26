@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/04 12:08:45 by egomes            #+#    #+#             */
-/*   Updated: 2021/08/23 17:05:53 by egomes           ###   ########.fr       */
+/*   Updated: 2021/08/26 00:34:27 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,8 @@ void	print_array(t_ps *swap)
 	while ((swap->i <= (swap->ac - 2)) 
 		|| ((swap->isb) && swap->j <= swap->bsize))
 	{
-		if (swap->bsize >= (swap->ac - 1) && i <= swap->bsize - (swap->ac - 1))
-		{
-			ft_putchar('	');
+		if (swap->bsize >= (swap->ac - 1) && i <= swap->bsize - (swap->ac - 1))	
 			i++;
-		}
 		else
 		{
 			ft_putnbr(swap->a[swap->i]);
@@ -113,6 +110,7 @@ void	init_struct(t_ps *swap)
 	swap->find_v = 0;
 	swap->countcomm = 0;
 	swap->protection = 0;
+	swap->inversea = 0;
 }
 
 void		find_v(char *str, t_ps *swap)
@@ -141,6 +139,7 @@ int		main(int ac, char **av)
 
 	init_struct(&swap);
 	swap.ac = ac;
+	swap.median = (swap.ac - 2) / 2;
 	swap.cpyac = ac;
 	swap.a = a;
 	swap.av = av;
@@ -157,6 +156,7 @@ int		main(int ac, char **av)
 			ft_putstr("Error\n");
 			return (0);
 		}
+		swap.stack = find_median(&swap);
 		push_swap(&swap);
 	}
 	print_commands(&swap);

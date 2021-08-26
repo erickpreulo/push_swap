@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/10 14:00:18 by egomes            #+#    #+#             */
-/*   Updated: 2021/08/23 17:01:08 by egomes           ###   ########.fr       */
+/*   Updated: 2021/08/25 22:55:36 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,6 +147,8 @@ void    swap_rrr(t_ps *swap)
     swap->rrr = 1;
     swap_rra(swap);
     swap_rrb(swap);
+    if (swap->find_v)
+        print_array(swap);
     save_commands(swap, "rrr\n");
 }
 
@@ -157,6 +159,8 @@ void    swap_ss(t_ps *swap)
     swap->ss = 1;
     swap_sa(swap);
     swap_sb(swap);
+    if (swap->find_v)
+        print_array(swap);
     save_commands(swap, "ss\n");
 }
 
@@ -167,5 +171,7 @@ void    swap_rr(t_ps *swap)
     swap->rr = 1;
     swap_ra(swap);
     swap_rb(swap);
+    if (swap->find_v)
+        print_array(swap);
     save_commands(swap, "rr\n");
 }
