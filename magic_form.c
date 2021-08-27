@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/12 13:50:29 by egomes            #+#    #+#             */
-/*   Updated: 2021/08/27 19:34:53 by egomes           ###   ########.fr       */
+/*   Updated: 2021/08/27 22:57:43 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,18 +41,6 @@ void    pass_to_b(t_ps *swap)
     {
         if (swap->a[0] == sort_a_low(swap) || swap->a[0] == sort_a_second_low(swap))
         {
-            /*printf("---%d---\n", sort_a_low(swap));
-            if (swap->a[0] < swap->b[0] && swap->a[0] < swap->b[1] && swap->a[0] > swap->b[swap->bsize])
-            {
-                i = 0;
-                while (swap->a[0] < swap->b[0])
-                {
-                    find_less_nbr(swap); // aqui esta o problema
-                    i++;
-                }
-                swap_pb(swap);
-            }
-            else*/
             swap_pb(swap);
             if (swap->countb > 1)
                 order_b(swap);
@@ -92,7 +80,10 @@ void    pass_to_a(t_ps *swap) //continuar daqui!
     while (swap->countb > 0)
     {
         if (swap->b[0] == sort_b_high(swap))
+        {
             swap_pa(swap);
+            order_a(swap);
+        }
         else
             order_b(swap);
         /*if (swap->a[0] > swap->a[1] && swap->b[0] < swap->b[1])

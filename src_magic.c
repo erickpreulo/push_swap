@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/27 00:19:54 by egomes            #+#    #+#             */
-/*   Updated: 2021/08/27 19:20:13 by egomes           ###   ########.fr       */
+/*   Updated: 2021/08/27 22:57:36 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,56 +34,6 @@ int     sort_b_low(t_ps *swap)
         }
     }
     return (0);
-}
-
-void     find_less_nbr(t_ps *swap)
-{
-    int i;
-
-    i = 0;
-    while (i <= swap->bsize)
-    {
-        if (swap->a[0] < swap->b[i] && i < swap->bsize / 2)
-        {
-            swap_rb(swap);
-            swap->protectionrb++;
-            break;
-        }
-        else if (swap->a[0] < swap->b[i])
-        {
-            swap_rrb(swap);
-            swap->protectionrrb++;
-            break;
-        }
-        i++;
-    }
-}
-
-void    find_less_nbr_1(t_ps *swap)
-{
-    int i;
-    int j;
-
-    
-    j = swap->bsize;
-    i = 0;
-    while (i < swap->bsize / 2)
-    {
-        if (swap->a[0] < sort_b_low(swap) && i < swap->bsize / 2)
-        {
-            swap_rrb(swap);
-            swap->protectionrrb++;
-            break;
-        }
-        else if (swap->a[0] < sort_b_low(swap))
-        {
-            swap_rb(swap);
-            swap->protectionrb++;
-            break;
-        }
-        i++;
-        j--;
-    }
 }
 
 int     sort_b_high(t_ps *swap)
@@ -144,6 +94,7 @@ int     sort_a_second_low(t_ps *swap)
     int i;
     int j;
     int size;
+    int cpy;
 
     i = 0;
     while (i <= swap->ac - 1)
@@ -156,8 +107,9 @@ int     sort_a_second_low(t_ps *swap)
                 size++;
             if (size == swap->ac - 2)
             {
-                swap->sortsecondlow = swap->a[i];
-                return (swap->sortsecondlow);
+                cpy = swap->a[i];
+                swap->sortsecondlow = cpy;
+                return (cpy);
             }
             j++;
         }
@@ -185,7 +137,7 @@ int    find_stack(t_ps *swap)
         }
         if (swap->saveup == 2)
         {
-            swap->savedown = swap->ac - 4;
+            swap->savedown = swap->ac - 5;
             return (swap->a[i]);
         }
         i++;
