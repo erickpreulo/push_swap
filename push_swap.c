@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/04 12:08:45 by egomes            #+#    #+#             */
-/*   Updated: 2021/08/26 00:34:27 by egomes           ###   ########.fr       */
+/*   Updated: 2021/08/27 00:24:03 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,7 +156,7 @@ int		main(int ac, char **av)
 			ft_putstr("Error\n");
 			return (0);
 		}
-		swap.stack = find_median(&swap);
+		swap.stack = find_stack(&swap);
 		push_swap(&swap);
 	}
 	print_commands(&swap);

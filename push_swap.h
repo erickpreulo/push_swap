@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/04 12:27:49 by egomes            #+#    #+#             */
-/*   Updated: 2021/08/26 00:46:08 by egomes           ###   ########.fr       */
+/*   Updated: 2021/08/27 02:59:09 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ typedef struct	s_ps
 {
 	int ac;
 	int *a;
-	int b[1000];
+	int b[3000];
 	char **av;
 	int i;
 	int j;
@@ -35,12 +35,14 @@ typedef struct	s_ps
 	int changeb;
 	int changea;
 	int find_v;
-	char *commands[5000];
+	char *commands[100000];
 	int	countcomm;
 	int ss;
 	int rr;
 	int rrr;
 	int protection;
+	int	protectionrb;
+	int protectionrrb;
 	int	stack;
 	int median;
 	int saveup;
@@ -78,5 +80,12 @@ void    print(int *nbr);
 void	magic_form(t_ps *swap);
 void    magic_5_or_less(t_ps *swap);
 int    find_median(t_ps *swap);
+int     less_stack_position_rra(t_ps *swap);
+int     less_stack_position_ra(t_ps *swap);
+int		find_stack(t_ps *swap);
+int     sort_b_low(t_ps *swap);
+int     sort_b_high(t_ps *swap);
+void    find_less_nbr(t_ps *swap);
+int     sort_a_low(t_ps *swap);
 
 #endif

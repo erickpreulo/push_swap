@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/04 17:33:03 by egomes            #+#    #+#             */
-/*   Updated: 2021/08/26 01:09:23 by egomes           ###   ########.fr       */
+/*   Updated: 2021/08/26 02:35:23 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,8 +113,6 @@ int		order_verify_a(t_ps *swap)
 {
 	int i;
 
-	if (swap->inversea != 0)
-		return (1);
 	i = 0;
 	while (i < swap->ac - 2)
 	{

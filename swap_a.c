@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/06 15:26:01 by egomes            #+#    #+#             */
-/*   Updated: 2021/08/23 17:05:36 by egomes           ###   ########.fr       */
+/*   Updated: 2021/08/27 02:59:16 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,17 @@ void    swap_ra(t_ps *swap)
 {
     int ac;
     int i;
-    int *buf;
+    int buf[3000];
 
     if (swap->find_v && !(swap->rr))
         ft_putstr("\nra\n");
-    buf = nbrcpya(swap);
+    i = 0;
+    while (i < swap->ac)
+    {
+        buf[i] = swap->a[i];
+        i++;
+    }
+    buf[i] = 0;
     ac = swap->ac - 2;
     swap->j = 0;
     swap->i = swap->a[0];
@@ -44,38 +50,27 @@ void    swap_ra(t_ps *swap)
         swap->j++;
     }
     swap->a[ac] = swap->i;
-    free(buf);
     if (swap->find_v && !(swap->rr))
         print_array(swap);
     if (!swap->rr)
         save_commands(swap, "ra\n");
 }
 
-int     *nbrcpya(t_ps *swap)
+void    swap_rra(t_ps *swap)
 {
+    int ac;
     int i;
-    int *buf;
+    int buf[3000];
 
+    if (swap->find_v && !(swap->rrr))
+        ft_putstr("\nrra\n");
     i = 0;
-    buf = malloc(swap->ac - 1);
     while (i < swap->ac)
     {
         buf[i] = swap->a[i];
         i++;
     }
     buf[i] = 0;
-    return (buf);
-}
-
-void    swap_rra(t_ps *swap)
-{
-    int ac;
-    int i;
-    int *buf;
-
-    if (swap->find_v && !(swap->rrr))
-        ft_putstr("\nrra\n");
-    buf = nbrcpya(swap);
     ac = swap->ac - 2;
     swap->j = 1;
     swap->i = swap->a[ac];
@@ -90,16 +85,21 @@ void    swap_rra(t_ps *swap)
         print_array(swap);
     if (!swap->rrr)
         save_commands(swap, "rra\n");
-    free(buf);
 }
 
 void    changeorder_a(t_ps *swap)
 {
-    int *buf;
+    int buf[3000];
     int i;
 
     i = 0;
-    buf = nbrcpya(swap);
+    while (i < swap->ac)
+    {
+        buf[i] = swap->a[i];
+        i++;
+    }
+    buf[i] = 0;
+    i = 0;
     swap->i = 1;
     while (swap->i <= swap->ac - 1)
     {

@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/10 14:00:18 by egomes            #+#    #+#             */
-/*   Updated: 2021/08/25 22:55:36 by egomes           ###   ########.fr       */
+/*   Updated: 2021/08/27 02:59:22 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,17 @@ void    swap_rb(t_ps *swap)
 {
     int ac;
     int i;
-    int *buf;
+    int buf[3000];
 
     if (swap->find_v && !(swap->rr))
         ft_putstr("\nrb\n");
-    buf = nbrcpyb(swap);
+    i = 0;
+    while (i < swap->countb)
+    {
+        buf[i] = swap->b[i];
+        i++;
+    }
+    buf[i] = 0;
     ac = swap->countb - 1;
     swap->j = 0;
     swap->i = swap->b[0];
@@ -48,34 +54,23 @@ void    swap_rb(t_ps *swap)
         print_array(swap);
     if (!swap->rr)
         save_commands(swap, "rb\n");
-    free(buf);
-}
-
-int     *nbrcpyb(t_ps *swap)
-{
-    int i;
-    int *buf;
-
-    i = 0;
-    buf = malloc(swap->countb);
-    while (i < swap->countb)
-    {
-        buf[i] = swap->b[i];
-        i++;
-    }
-    buf[i] = 0;
-    return (buf);
 }
 
 void    swap_rrb(t_ps *swap)
 {
     int ac;
     int i;
-    int *buf;
+    int buf[3000];
 
     if (swap->find_v && !(swap->rrr))
         ft_putstr("\nrrb\n");
-    buf = nbrcpyb(swap);
+    i = 0;
+    while (i < swap->countb)
+    {
+        buf[i] = swap->b[i];
+        i++;
+    }
+    buf[i] = 0;
     ac = swap->bsize;
     swap->j = 1;
     swap->i = swap->b[ac];
@@ -90,14 +85,20 @@ void    swap_rrb(t_ps *swap)
         print_array(swap);
     if (!swap->rrr)
         save_commands(swap, "rrb\n");
-    free(buf);
 }
 
 void    changeorder_b(t_ps *swap)
 {
-    int *buf;
+    int buf[3000];
+    int i;
 
-    buf = nbrcpyb(swap);
+    i = 0;
+    while (i < swap->countb)
+    {
+        buf[i] = swap->b[i];
+        i++;
+    }
+    buf[i] = 0;
     if (swap->countb == 0)
         swap->b[swap->countb] = swap->a[0];
     else
