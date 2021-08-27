@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/12 13:50:29 by egomes            #+#    #+#             */
-/*   Updated: 2021/08/27 02:57:20 by egomes           ###   ########.fr       */
+/*   Updated: 2021/08/27 03:14:00 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,7 @@ void	magic_form(t_ps *swap)
 	{
         if (swap->ac - 1 + swap->countb <= 5)
             magic_5_or_less(swap);
-        else
+        else if (swap->ac - 1 <= 100)
             magic_100_or_less(swap);
 		magic_form(swap);
 	}
