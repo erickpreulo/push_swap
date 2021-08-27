@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/04 12:27:49 by egomes            #+#    #+#             */
-/*   Updated: 2021/08/27 02:59:09 by egomes           ###   ########.fr       */
+/*   Updated: 2021/08/27 19:37:16 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ typedef struct	s_ps
 {
 	int ac;
 	int *a;
-	int b[3000];
+	int b[600];
 	char **av;
 	int i;
 	int j;
@@ -35,7 +35,7 @@ typedef struct	s_ps
 	int changeb;
 	int changea;
 	int find_v;
-	char *commands[100000];
+	char *commands[999999];
 	int	countcomm;
 	int ss;
 	int rr;
@@ -48,6 +48,8 @@ typedef struct	s_ps
 	int saveup;
 	int savedown;
 	int inversea;
+	int sortlow;
+	int sortsecondlow;
 }				t_ps;
 
 void    ft_putnbr(int nb);
@@ -87,5 +89,6 @@ int     sort_b_low(t_ps *swap);
 int     sort_b_high(t_ps *swap);
 void    find_less_nbr(t_ps *swap);
 int     sort_a_low(t_ps *swap);
+int     sort_a_second_low(t_ps *swap);
 
 #endif

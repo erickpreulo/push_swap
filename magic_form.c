@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/12 13:50:29 by egomes            #+#    #+#             */
-/*   Updated: 2021/08/27 03:14:00 by egomes           ###   ########.fr       */
+/*   Updated: 2021/08/27 19:34:53 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void    pass_to_b(t_ps *swap)
 {
     while (swap->countb <= swap->savedown)
     {
-        if (swap->a[0] == sort_a_low(swap))
+        if (swap->a[0] == sort_a_low(swap) || swap->a[0] == sort_a_second_low(swap))
         {
             /*printf("---%d---\n", sort_a_low(swap));
             if (swap->a[0] < swap->b[0] && swap->a[0] < swap->b[1] && swap->a[0] > swap->b[swap->bsize])
@@ -57,7 +57,7 @@ void    pass_to_b(t_ps *swap)
             if (swap->countb > 1)
                 order_b(swap);
         }
-        else if (swap->a[1] == sort_a_low(swap))
+        else if (swap->a[1] == swap->sortlow)
             swap_sa(swap);
         else if (less_stack_position_ra(swap))
             swap_ra(swap);
@@ -73,7 +73,7 @@ void    order_a(t_ps *swap)
         if (swap->a[0] > swap->a[1] && swap->a[0] < swap->a[swap->ac - 2])
             swap_sa(swap);
         else if (swap->a[0] > swap->a[1] && swap->a[0] > swap->a[swap->ac - 2])
-            swap_ra(swap); //mudar esta funçao, se o numero menos estiver na metade para a cima eu uso
+            swap_ra(swap);
         else if (swap->a[0] < swap->a[1] && swap->a[0] > swap->a[swap->ac - 2])
             swap_rra(swap);
         else if (swap->a[0] < swap->stack)
@@ -115,7 +115,7 @@ void	magic_form(t_ps *swap)
 	{
         if (swap->ac - 1 + swap->countb <= 5)
             magic_5_or_less(swap);
-        else if (swap->ac - 1 <= 100)
+        else
             magic_100_or_less(swap);
 		magic_form(swap);
 	}

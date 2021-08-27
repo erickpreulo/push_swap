@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Push_swap.c                                        :+:      :+:    :+:   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/04 12:08:45 by egomes            #+#    #+#             */
-/*   Updated: 2021/08/27 00:24:03 by egomes           ###   ########.fr       */
+/*   Updated: 2021/08/27 19:19:47 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,8 @@ void	init_struct(t_ps *swap)
 	swap->countcomm = 0;
 	swap->protection = 0;
 	swap->inversea = 0;
+	swap->sortlow = 0;
+	swap->sortsecondlow = 0;
 }
 
 void		find_v(char *str, t_ps *swap)
