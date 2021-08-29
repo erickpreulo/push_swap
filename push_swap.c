@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/04 12:08:45 by egomes            #+#    #+#             */
-/*   Updated: 2021/08/27 22:46:47 by egomes           ###   ########.fr       */
+/*   Updated: 2021/08/29 05:09:30 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,6 +113,10 @@ void	init_struct(t_ps *swap)
 	swap->inversea = 0;
 	swap->sortlow = 0;
 	swap->sortsecondlow = 0;
+	swap->sorthigh = 0;
+	swap->sortsecondhigh = 0;
+	swap->count_second_less = 0;
+	swap->count_second_high = 0;
 }
 
 void		find_v(char *str, t_ps *swap)
@@ -158,9 +162,9 @@ int		main(int ac, char **av)
 			ft_putstr("Error\n");
 			return (0);
 		}
-		swap.stack = find_stack(&swap);
 		push_swap(&swap);
 	}
 	print_commands(&swap);
+	printf("---%d---\n", swap.countcomm);
 	return (0);
 }

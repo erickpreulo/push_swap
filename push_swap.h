@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/04 12:27:49 by egomes            #+#    #+#             */
-/*   Updated: 2021/08/27 22:46:34 by egomes           ###   ########.fr       */
+/*   Updated: 2021/08/29 05:10:30 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ typedef struct	s_ps
 	int changeb;
 	int changea;
 	int find_v;
-	char *commands[999999];
+	char *commands[100000];
 	int	countcomm;
 	int ss;
 	int rr;
@@ -43,13 +43,20 @@ typedef struct	s_ps
 	int protection;
 	int	protectionrb;
 	int protectionrrb;
-	int	stack;
 	int median;
 	int saveup;
 	int savedown;
 	int inversea;
 	int sortlow;
 	int sortsecondlow;
+	int sorthigh;
+	int sortsecondhigh;
+	int less_ra;
+	int second_less_ra;
+    int less_rra;
+    int second_less_rra;
+	int	count_second_less;
+	int	count_second_high;
 }				t_ps;
 
 void    ft_putnbr(int nb);
@@ -90,5 +97,12 @@ int     sort_b_high(t_ps *swap);
 void    find_less_nbr(t_ps *swap);
 int     sort_a_low(t_ps *swap);
 int     sort_a_second_low(t_ps *swap);
-
+void    bether_choice_low_ra(t_ps *swap);
+void    bether_choice_second_low_ra(t_ps *swap);
+void    bether_choice_low_rra(t_ps *swap);
+void    bether_choice_second_low_rra(t_ps *swap);
+void    bether_choice_ra_rra(t_ps *swap);
+void    the_choice(t_ps *swap);
+int     sort_a_high(t_ps *swap);
+int     sort_a_second_high(t_ps *swap);
 #endif
