@@ -12,9 +12,9 @@
 
 #include "push_swap.h"
 
-int		ft_len_ponteiro(char **str)
+int	ft_len_ponteiro(char **str)
 {
-	int i;
+	int		i;
 
 	i = 0;
 	while (str[i] != 0)
@@ -22,9 +22,9 @@ int		ft_len_ponteiro(char **str)
 	return (i);
 }
 
-int		order_verify(t_ps *swap)
+int	order_verify(t_ps *swap)
 {
-	int i;
+	int		i;
 
 	i = 0;
 	if (swap->countb > 0)
@@ -32,35 +32,35 @@ int		order_verify(t_ps *swap)
 	while (i < swap->ac - 2)
 	{
 		if ((swap->a[i] > swap->a[i + 1]))
-			return(1);
+			return (1);
 		i++;
 	}
 	return (0);
 }
 
-int		order_verify_a(t_ps *swap)
+int	order_verify_a(t_ps *swap)
 {
-	int i;
+	int		i;
 
 	i = 0;
 	while (i < swap->ac - 2)
 	{
 		if ((swap->a[i] > swap->a[i + 1]))
-			return(1);
+			return (1);
 		i++;
 	}
 	return (0);
 }
 
-int		order_verify_b(t_ps *swap)
+int	order_verify_b(t_ps *swap)
 {
-	int i;
+	int		i;
 
 	i = 0;
 	while (i < swap->countb)
 	{
 		if ((swap->b[i] < swap->b[i + 1]))
-			return(1);
+			return (1);
 		i++;
 	}
 	return (0);

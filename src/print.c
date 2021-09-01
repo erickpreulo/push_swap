@@ -12,18 +12,15 @@
 
 #include "push_swap.h"
 
-void	print_array(t_ps *swap)
+void	print_a_and_b(t_ps *swap)
 {
-	int i;
+	int	i;
 
 	i = 0;
-	swap->i = 0;
-	swap->j = 0;
-	ft_putstr("stacks\n");
-	while ((swap->i <= (swap->ac - 2)) 
+	while ((swap->i <= (swap->ac - 2))
 		|| ((swap->isb) && swap->j <= swap->bsize))
 	{
-		if (swap->bsize >= (swap->ac - 1) && i <= swap->bsize - (swap->ac - 1))	
+		if (swap->bsize >= (swap->ac - 1) && i <= swap->bsize - (swap->ac - 1))
 			i++;
 		else
 		{
@@ -41,6 +38,14 @@ void	print_array(t_ps *swap)
 		}
 		ft_putchar('\n');
 	}
+}
+
+void	print_array(t_ps *swap)
+{
+	swap->i = 0;
+	swap->j = 0;
+	ft_putstr("stacks\n");
+	print_a_and_b(swap);
 	swap->ss = 0;
 	swap->rr = 0;
 	swap->rrr = 0;
@@ -56,7 +61,7 @@ void	save_commands(t_ps *swap, char *str)
 
 void	print_commands(t_ps *swap)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < swap->countcomm)
@@ -66,14 +71,14 @@ void	print_commands(t_ps *swap)
 	}
 }
 
-void    print(int *nbr)
+void	print(int *nbr)
 {
-    int i;
+	int	i;
 
-    i = 0;
-    while (i <= 8)
-    {
-        ft_putnbr(nbr[i]);
-        i++;
-    }
+	i = 0;
+	while (i <= 8)
+	{
+		ft_putnbr(nbr[i]);
+		i++;
+	}
 }

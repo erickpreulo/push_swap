@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-void		find_v(char *str, t_ps *swap)
+void	find_v(char *str, t_ps *swap)
 {
 	if (str[0] == '-' && str[1] == 'v' && str[2] == '\0')
 		swap->find_v = 1;
@@ -20,7 +20,7 @@ void		find_v(char *str, t_ps *swap)
 
 void	change_av(t_ps *swap)
 {
-	int i;
+	int		i;
 
 	i = 0;
 	while (i < swap->ac)

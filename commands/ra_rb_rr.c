@@ -12,76 +12,84 @@
 
 #include "push_swap.h"
 
-void    swap_ra(t_ps *swap)
+void	print_ra(t_ps *swap)
 {
-    int ac;
-    int i;
-    int buf[3000];
-
-    if (swap->find_v && !(swap->rr))
-        ft_putstr("\nra\n");
-    i = 0;
-    while (i < swap->ac)
-    {
-        buf[i] = swap->a[i];
-        i++;
-    }
-    buf[i] = 0;
-    ac = swap->ac - 2;
-    swap->j = 0;
-    swap->i = swap->a[0];
-    while(swap->j <= ac)
-    {
-        i = buf[swap->j + 1];
-        swap->a[swap->j] = i;
-        swap->j++;
-    }
-    swap->a[ac] = swap->i;
-    if (swap->find_v && !(swap->rr))
-        print_array(swap);
-    if (!swap->rr)
-        save_commands(swap, "ra\n");
+	if (swap->find_v && !(swap->rr))
+		print_array(swap);
+	if (!swap->rr)
+		save_commands(swap, "ra\n");
 }
 
-void    swap_rb(t_ps *swap)
+void	swap_ra(t_ps *swap)
 {
-    int ac;
-    int i;
-    int buf[3000];
+	int		ac;
+	int		buf[3000];
 
-    if (swap->find_v && !(swap->rr))
-        ft_putstr("\nrb\n");
-    i = 0;
-    while (i < swap->countb)
-    {
-        buf[i] = swap->b[i];
-        i++;
-    }
-    buf[i] = 0;
-    ac = swap->countb - 1;
-    swap->j = 0;
-    swap->i = swap->b[0];
-    while(swap->j < ac)
-    {
-        i = swap->b[swap->j + 1];
-        swap->b[swap->j] = i;
-        swap->j++;
-    }
-    swap->b[ac] = swap->i;
-    if (swap->find_v && !(swap->rr))
-        print_array(swap);
-    if (!swap->rr)
-        save_commands(swap, "rb\n");
+	if (swap->find_v && !(swap->rr))
+		ft_putstr("\nra\n");
+	swap->x = 0;
+	while (swap->x < swap->ac)
+	{
+		buf[swap->x] = swap->a[swap->x];
+		swap->x++;
+	}
+	buf[swap->x] = 0;
+	ac = swap->ac - 2;
+	swap->j = 0;
+	swap->i = swap->a[0];
+	while (swap->j <= ac)
+	{
+		swap->x = buf[swap->j + 1];
+		swap->a[swap->j] = swap->x;
+		swap->j++;
+	}
+	swap->a[ac] = swap->i;
+	print_ra(swap);
 }
 
-void    swap_rr(t_ps *swap)
+void	print_rb(t_ps *swap)
 {
-    if (swap->find_v)
-        ft_putstr("\nrr\n");
-    swap->rr = 1;
-    swap_ra(swap);
-    swap_rb(swap);
-    if (swap->find_v)
-        print_array(swap);
-    save_commands(swap, "rr\n");
+	if (swap->find_v && !(swap->rr))
+		print_array(swap);
+	if (!swap->rr)
+		save_commands(swap, "rb\n");
+}
+
+void	swap_rb(t_ps *swap)
+{
+	int		ac;
+	int		buf[3000];
+
+	if (swap->find_v && !(swap->rr))
+		ft_putstr("\nrb\n");
+	swap->x = 0;
+	while (swap->x < swap->countb)
+	{
+		buf[swap->x] = swap->b[swap->x];
+		swap->x++;
+	}
+	buf[swap->x] = 0;
+	ac = swap->countb - 1;
+	swap->j = 0;
+	swap->i = swap->b[0];
+	while (swap->j < ac)
+	{
+		swap->x = swap->b[swap->j + 1];
+		swap->b[swap->j] = swap->x;
+		swap->j++;
+	}
+	swap->b[ac] = swap->i;
+	print_rb(swap);
+}
+
+void	swap_rr(t_ps *swap)
+{
+	if (swap->find_v)
+		ft_putstr("\nrr\n");
+	swap->rr = 1;
+	swap_ra(swap);
+	swap_rb(swap);
+	if (swap->find_v)
+		print_array(swap);
+	save_commands(swap, "rr\n");
 }

@@ -12,9 +12,9 @@
 
 #include "push_swap.h"
 
-int		isnbr(char *str)
+int	isnbr(char *str)
 {
-	int i;
+	int		i;
 
 	i = 0;
 	while (str[i] != '\0')
@@ -26,10 +26,10 @@ int		isnbr(char *str)
 	return (0);
 }
 
-int		duplicate(t_ps *swap)
+int	duplicate(t_ps *swap)
 {
-	int i;
-	int j;
+	int		i;
+	int		j;
 
 	i = 0;
 	while (i < swap->ac - 1)
@@ -46,7 +46,7 @@ int		duplicate(t_ps *swap)
 	return (0);
 }
 
-int		validation(t_ps *swap)
+int	validation(t_ps *swap)
 {
 	swap->j = 0;
 	swap->i = 1;
@@ -54,7 +54,7 @@ int		validation(t_ps *swap)
 	{
 		if (isnbr(swap->av[swap->i]) || duplicate(swap))
 			return (1);
-		else if ((ft_atoi(swap->av[swap->i]) > INT16_MAX) 
+		else if ((ft_atoi(swap->av[swap->i]) > INT16_MAX)
 			|| ft_strlen(swap->av[swap->i]) > 6)
 			return (1);
 		swap->i++;

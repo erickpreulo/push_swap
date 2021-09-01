@@ -12,7 +12,6 @@
 
 #include "push_swap.h"
 
-
 void	push_swap(t_ps *swap)
 {
 	if (swap->ac > 2)
@@ -62,9 +61,9 @@ void	init_struct(t_ps *swap)
 	swap->countstack = 0;
 }
 
-int		main(int ac, char **av)
+int	main(int ac, char **av)
 {
-	t_ps swap;
+	t_ps	swap;
 
 	init_struct(&swap);
 	swap.ac = ac;
