@@ -1,65 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   src.c                                              :+:      :+:    :+:   */
+/*   order_verify.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/04 17:33:03 by egomes            #+#    #+#             */
-/*   Updated: 2021/08/26 02:35:23 by egomes           ###   ########.fr       */
+/*   Created: 2021/09/01 04:20:40 by egomes            #+#    #+#             */
+/*   Updated: 2021/09/01 04:22:14 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void    ft_putchar(char c)
-{
-    write(1, &c, 1);
-}
-
-void    ft_putnbr(int nb)
-{
-    if (nb < 0)
-    {
-        ft_putchar('-');
-        nb = -nb;
-    }
-    if (nb >= 10)
-    {
-        ft_putnbr(nb / 10);
-        ft_putnbr(nb % 10);
-    }
-    else
-        ft_putchar(nb + '0');
-}
-
-int	ft_atoi(const char *str)
-{
-	long int	neg;
-	long int	i;
-	long int	num;
-
-	i = 0;
-	neg = 1;
-	num = 0;
-	while (str[i] == ' ' || str[i] == '\n' || str[i] == '\t' || str[i] == '\v'
-		|| str[i] == '\f' || str[i] == '\r')
-		i++;
-	if (str[i] == '-' || str[i] == '+')
-	{
-		if (str[i] == '-')
-			neg *= -1;
-		i++;
-	}
-	while (str[i] >= 48 && str[i] <= 57)
-	{
-		num = num * 10 + (str[i] - 48);
-		i++;
-	}
-	return (num * neg);
-}
-
-int		ft_strlen(char *str)
+int		ft_len_ponteiro(char **str)
 {
 	int i;
 
@@ -67,30 +20,6 @@ int		ft_strlen(char *str)
 	while (str[i] != 0)
 		i++;
 	return (i);
-}
-
-void	ft_putstr(char *str)
-{
-	int i;
-
-	i = 0;
-	while (str[i] != '\0')
-	{
-		ft_putchar(str[i]);
-		i++;
-	}
-}
-
-void    print(int *nbr)
-{
-    int i;
-
-    i = 0;
-    while (i <= 8)
-    {
-        ft_putnbr(nbr[i]);
-        i++;
-    }
 }
 
 int		order_verify(t_ps *swap)

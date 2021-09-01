@@ -6,65 +6,12 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/04 12:08:45 by egomes            #+#    #+#             */
-/*   Updated: 2021/08/29 05:09:30 by egomes           ###   ########.fr       */
+/*   Updated: 2021/09/01 05:01:25 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	print_array(t_ps *swap)
-{
-	int i;
-
-	i = 0;
-	swap->i = 0;
-	swap->j = 0;
-	ft_putstr("stacks\n");
-	while ((swap->i <= (swap->ac - 2)) 
-		|| ((swap->isb) && swap->j <= swap->bsize))
-	{
-		if (swap->bsize >= (swap->ac - 1) && i <= swap->bsize - (swap->ac - 1))	
-			i++;
-		else
-		{
-			ft_putnbr(swap->a[swap->i]);
-			swap->i++;
-		}
-		ft_putchar('	');
-		if (swap->isb && swap->bsize >= (swap->ac - 1 - swap->i))
-		{
-			if (swap->j <= swap->bsize)
-			{
-				ft_putnbr(swap->b[swap->j]);
-				swap->j++;
-			}
-		}
-		ft_putchar('\n');
-	}
-	swap->ss = 0;
-	swap->rr = 0;
-	swap->rrr = 0;
-	ft_putstr("_	_\n");
-	ft_putstr("a	b\n");
-}
-
-void	save_commands(t_ps *swap, char *str)
-{
-	swap->commands[swap->countcomm] = str;
-	swap->countcomm++;
-}
-
-void	print_commands(t_ps *swap)
-{
-	int i;
-
-	i = 0;
-	while (i < swap->countcomm)
-	{
-		ft_putstr(swap->commands[i]);
-		i++;
-	}
-}
 
 void	push_swap(t_ps *swap)
 {
@@ -77,7 +24,7 @@ void	push_swap(t_ps *swap)
 				save_commands(swap, "\n");
 				print_array(swap);
 			}
-			magic_form(swap);
+			order_form(swap);
 		}
 		else if (swap->find_v)
 			print_array(swap);
@@ -109,45 +56,19 @@ void	init_struct(t_ps *swap)
 	swap->bsize = 0;
 	swap->find_v = 0;
 	swap->countcomm = 0;
-	swap->protection = 0;
-	swap->inversea = 0;
 	swap->sortlow = 0;
-	swap->sortsecondlow = 0;
-	swap->sorthigh = 0;
-	swap->sortsecondhigh = 0;
-	swap->count_second_less = 0;
-	swap->count_second_high = 0;
-}
-
-void		find_v(char *str, t_ps *swap)
-{
-	if (str[0] == '-' && str[1] == 'v' && str[2] == '\0')
-		swap->find_v = 1;
-}
-
-void	change_av(t_ps *swap)
-{
-	int i;
-
-	i = 0;
-	while (i < swap->ac)
-	{
-		swap->av[i] = swap->av[i + 1];
-		i++;
-	}
-	swap->ac -= 1;
+	swap->sortbhigh = 0;
+	swap->sortlaststack = 0;
+	swap->countstack = 0;
 }
 
 int		main(int ac, char **av)
 {
 	t_ps swap;
-	int a[ac];
 
 	init_struct(&swap);
 	swap.ac = ac;
-	swap.median = (swap.ac - 2) / 2;
 	swap.cpyac = ac;
-	swap.a = a;
 	swap.av = av;
 	find_v(av[1], &swap);
 	if (swap.find_v)
@@ -165,6 +86,5 @@ int		main(int ac, char **av)
 		push_swap(&swap);
 	}
 	print_commands(&swap);
-	printf("---%d---\n", swap.countcomm);
 	return (0);
 }

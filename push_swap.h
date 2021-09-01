@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/04 12:27:49 by egomes            #+#    #+#             */
-/*   Updated: 2021/08/29 05:10:30 by egomes           ###   ########.fr       */
+/*   Updated: 2021/09/01 05:01:00 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,51 +19,50 @@
 
 typedef struct	s_ps
 {
-	int ac;
-	int *a;
-	int b[600];
+	char *commands[100000];
 	char **av;
+	int a[1000];
+	int b[1000];
+	int ac;
 	int i;
 	int j;
+	int ss;
+	int rr;
+	int rrr;
 	int isa;
 	int isb;
 	int bsize;
 	int size;
-	int save;
 	int cpyac;
 	int countb;
 	int changeb;
 	int changea;
 	int find_v;
-	char *commands[100000];
 	int	countcomm;
-	int ss;
-	int rr;
-	int rrr;
-	int protection;
-	int	protectionrb;
-	int protectionrrb;
-	int median;
-	int saveup;
-	int savedown;
-	int inversea;
 	int sortlow;
-	int sortsecondlow;
-	int sorthigh;
-	int sortsecondhigh;
-	int less_ra;
-	int second_less_ra;
-    int less_rra;
-    int second_less_rra;
-	int	count_second_less;
-	int	count_second_high;
+	int sortbhigh;
+	int sortlaststack;
+	int countstack;
+	int size_stack;
+	int less_size_stack;
 }				t_ps;
 
-void    ft_putnbr(int nb);
+		// SRC
 void    ft_putchar(char c);
-int	ft_atoi(const char *str);
+void    ft_putnbr(int nb);
+int		ft_atoi(const char *str);
 int		ft_strlen(char *str);
+int		ft_len_ponteiro(char **str);
 void	ft_putstr(char *str);
+
+		// validation
+int		validation(t_ps *swap);
+
+		// -v command. Can see what happen
+void	find_v(char *str, t_ps *swap);
+void	change_av(t_ps *swap);
+
+		// commands
 void    swap_sa(t_ps *swap);
 void    swap_sb(t_ps *swap);
 void	swap_ss(t_ps *swap);
@@ -75,34 +74,26 @@ void    swap_rrb(t_ps *swap);
 void    swap_rrr(t_ps *swap);
 void    swap_pa(t_ps *swap);
 void    swap_pb(t_ps *swap);
-int		validation(t_ps *swap);
-int		ft_strlennbr(int *str);
-char	*ft_itoa(int n);
-int     *nbrcpya(t_ps *swap);
-int     *nbrcpyb(t_ps *swap);
+
+		// order verify
 int		order_verify(t_ps *swap);
 int		order_verify_a(t_ps *swap);
 int		order_verify_b(t_ps *swap);
-void	print_array(t_ps *swap);
-void	save_commands(t_ps *swap, char *str);
-void    print(int *nbr);
-void	magic_form(t_ps *swap);
-void    magic_5_or_less(t_ps *swap);
-int    find_median(t_ps *swap);
-int     less_stack_position_rra(t_ps *swap);
-int     less_stack_position_ra(t_ps *swap);
-int		find_stack(t_ps *swap);
-int     sort_b_low(t_ps *swap);
+
+		// put the array in order
+void	order_form(t_ps *swap);
+void    order_5_or_less(t_ps *swap);
 int     sort_b_high(t_ps *swap);
-void    find_less_nbr(t_ps *swap);
-int     sort_a_low(t_ps *swap);
-int     sort_a_second_low(t_ps *swap);
-void    bether_choice_low_ra(t_ps *swap);
-void    bether_choice_second_low_ra(t_ps *swap);
-void    bether_choice_low_rra(t_ps *swap);
-void    bether_choice_second_low_rra(t_ps *swap);
-void    bether_choice_ra_rra(t_ps *swap);
-void    the_choice(t_ps *swap);
-int     sort_a_high(t_ps *swap);
-int     sort_a_second_high(t_ps *swap);
+int     less_stack_position_ra(t_ps *swap);
+int     less_stack_position_rb(t_ps *swap);
+int     sort_a_last_stack_100(t_ps *swap);
+int     sort_a_last_stack_500(t_ps *swap);
+void    pass_to_b_100(t_ps *swap);
+void    pass_to_b_500(t_ps *swap);
+
+		// print
+void    print(int *nbr);
+void	print_array(t_ps *swap);
+void	print_commands(t_ps *swap);
+void	save_commands(t_ps *swap, char *str);
 #endif
