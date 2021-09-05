@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/04 12:08:45 by egomes            #+#    #+#             */
-/*   Updated: 2021/09/01 05:01:25 by egomes           ###   ########.fr       */
+/*   Updated: 2021/09/05 05:15:57 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,11 @@ int	main(int ac, char **av)
 {
 	t_ps	swap;
 
+	if (ac < 2)
+	{
+		ft_putstr("Error\n");
+		return (0);
+	}
 	init_struct(&swap);
 	swap.ac = ac;
 	swap.cpyac = ac;
@@ -72,18 +77,13 @@ int	main(int ac, char **av)
 	find_v(av[1], &swap);
 	if (swap.find_v)
 		change_av(&swap);
-	if (ac < 2)
-		ft_putstr("Error\n");
-	else
+	take_array(&swap);
+	if (validation(&swap))
 	{
-		take_array(&swap);
-		if (validation(&swap))
-		{
-			ft_putstr("Error\n");
-			return (0);
-		}
-		push_swap(&swap);
+		ft_putstr("Error\n");
+		return (0);
 	}
+	push_swap(&swap);
 	print_commands(&swap);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/04 12:27:49 by egomes            #+#    #+#             */
-/*   Updated: 2021/09/01 05:01:00 by egomes           ###   ########.fr       */
+/*   Updated: 2021/09/05 05:12:21 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ typedef struct s_ps
 
 		// SRC
 void	ft_putchar(char c);
-void	ft_putnbr(int nb);
+void	ft_putnbr(long int nb);
 int		ft_atoi(const char *str);
 int		ft_strlen(char *str);
 int		ft_len_ponteiro(char **str);
