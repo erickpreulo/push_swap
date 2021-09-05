@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/06 22:02:39 by egomes            #+#    #+#             */
-/*   Updated: 2021/09/05 04:49:32 by egomes           ###   ########.fr       */
+/*   Updated: 2021/09/05 05:21:36 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,14 +50,16 @@ int	duplicate(t_ps *swap)
 
 int	validation(t_ps *swap)
 {
+	int i;
+
 	swap->j = 0;
 	swap->i = 1;
 	while (swap->i < swap->ac)
 	{
+		i = ft_atoi(swap->av[swap->i]);
 		if (isnbr(swap->av[swap->i]) || duplicate(swap))
 			return (1);
-		else if (ft_atoi(swap->av[swap->i]) > 2147483647
-			|| ft_atoi(swap->av[swap->i]) < -2147483648)
+		if (i > 2147483647 || i < -2147483648)
 			return (1);
 		swap->i++;
 	}
