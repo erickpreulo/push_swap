@@ -50,7 +50,7 @@ int	duplicate(t_ps *swap)
 
 int	validation(t_ps *swap)
 {
-	int i;
+	int	i;
 
 	swap->j = 0;
 	swap->i = 1;
